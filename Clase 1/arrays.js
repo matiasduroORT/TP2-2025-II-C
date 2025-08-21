@@ -97,13 +97,22 @@ const resultadoSlice = numeros.slice(0, 3)
 
 console.log("resultadoSlice: ", resultadoSlice);
 
-
 // Splice
 const resultadoSplice = numeros.splice(1, 4, 77)
 
 console.log("resultadoSplice: ", resultadoSplice);
 
 console.log("Numeros Actuales: ", numeros);
+
+
+// SPLIT
+let palabra = 'Casa'
+
+const resultado = palabra.split('')
+
+console.log("resultado: ", resultado);
+
+console.log("resultado al reves: ", resultado.reverse());
 
 
 
