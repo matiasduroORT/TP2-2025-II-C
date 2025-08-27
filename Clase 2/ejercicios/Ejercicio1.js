@@ -2,23 +2,41 @@
 // identificar palindromos
 
 
-const palabras = ["Sol", "Ana", "Oso", "Saludo", "Reconocer", "Soldado", "Neuquen"]
 
 function invertirTexto(palabra){
-    // aca se invierte el texto
-    palabra.split()
-    
+
+    return  palabra.split("").reverse().join("")
 }
 
 function esPalindromo(palabras){
 
-    let palabra
-    palabra.toLowerCase()
+    let palindromos = []
+    
+    for (const palabra of palabras) {
+        let palabraminiscula = palabra.toLowerCase()
 
-    // if() 
+        let palabraInvertida = invertirTexto(palabraminiscula)
+        console.log("palabraInvertida: ", palabraInvertida);
+        if(palabraminiscula === palabraInvertida){
+            palindromos.push(palabra)
+        }
+        
+    }
 
-    // return 
+    // palabras.forEach(element => {
+    //     let palabraminiscula = element.toLowerCase()
+
+    //     let palabraInvertida = invertirTexto(palabraminiscula)
+    //     console.log("palabraInvertida: ", palabraInvertida);
+    //     if(palabraminiscula === palabraInvertida){
+    //         palindromos.push(palabra)
+    //     }
+        
+    // });
+
+    return palindromos
 }
+const palabras = ["Sol", "Ana", "Oso", "Saludo", "Reconocer", "Soldado", "Neuquen"]
 
 const resultado = esPalindromo(palabras)
 

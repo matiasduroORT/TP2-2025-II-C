@@ -5,7 +5,7 @@ var a = 20;
 let b = 10;
 
 // console.log("b: ", b);
-// console.log( sumar(2, 3));
+console.log( sumar(a, b));
 
 function sumar(x, y){
     return x + y
