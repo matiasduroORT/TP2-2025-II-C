@@ -2,10 +2,26 @@
 //  Funcion asincronica, con callback
 function separarUsuariosCallback(lista, callback){
 
+    console.log("lista: ", lista);    
     setTimeout(() => {
 
+    let hombres = []
+    let mujeres = []
+
+    for (const user of lista) {
         
+        if(user.sexo === "M"){
+            hombres.push(user.nombre)
+        }else{
+            mujeres.push(user.nombre)
+        }
         
+    }
+    callback({
+        hombres,
+        mujeres
+    })
+
     }, 1000);
 
 }
@@ -20,6 +36,6 @@ const usuarios = [
   ];
 
 separarUsuariosCallback(usuarios, (resultado) => {
-    console.log("Resultado: ", resultado);
-    
+    console.log("Resultado: ", resultado)
+     
 })
