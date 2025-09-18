@@ -1,11 +1,14 @@
 import express from 'express'
-import { getUsers } from '../controllers/usersController.js'
+import { getUsers, createUser, getUsersSearch } from '../controllers/usersController.js'
 
 const router = express.Router()
 
 // /api/users/
 router.get("/", getUsers)
-// router.post("/", )
+router.get("/search", getUsersSearch)
+
+router.post("/", createUser)
 
 
+// MONGODB USER matiasduro y pass TP2
 export default router

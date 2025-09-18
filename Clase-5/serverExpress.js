@@ -3,21 +3,6 @@ const express = require("express");
 const PORT = 3000
 const app = express()
 
-
-const alumnos = [
-    {
-        id: 1,
-        nombre: 'Augusto',
-        edad: 28,
-    },
-    {
-        id:2,
-        nombre: 'Pedro',
-        edad: 35,
-    },
-]
-
-
 app.use(express.json())
 
  
@@ -102,26 +87,7 @@ app.get("/api/alumno/:id", (req, res) => {
     
 })
 
-app.post("/api/alumnos", (req, res) => {
-
-    console.log("req.body: ", req.body);
-
-
-    if(!req.body.id && !req.body.nombre && !req.body.edad){
-        res.status(400).json({
-            error: "Faltan Datos"
-        })
-    }
-
-    const nuevoAlumno = {
-        id: Number(req.body.id),
-        nombre: req.body.nombre,
-        edad: req.body.edad
-    };
-    alumnos.push(nuevoAlumno)
-    res.status(201).json(alumnos)
-    res.json({mensaje: "Esto es post"})
-})
+app.post("/api/alumnos", )
 
 
 

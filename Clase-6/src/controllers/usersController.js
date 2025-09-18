@@ -1,34 +1,63 @@
 import { users } from "../data/users.js";
+import User from "../models/User.js";
 
 
-export const getUsers = (req, res) => {
+export const getUsers = async (req, res) => {
 
-    if(req.query.id){
-        
-        let id = Number(req.query.id)
 
-        const user = users.find((user) => {
-            console.log("user: ", user.id);
-            console.log("id params: ", id);
-            console.log("===", user.id === id);
-            console.log("==", user.id == id);
+    try {
 
-            return user.id === id
+        const user = await User.find()
+        res.json(user)
+
+    } catch (error) {
+        res.status(500).json({ error: "Error al obtener alumnos", errorMsg: error})
+    }
+}
+
+export const getUsersSearch = async (req, res) => {
+
+    const {nombre} = req.query
+
+    try {
+
+        const user = await User.find({
+            nombre: { 
+                $regex: `^${nombre}`,
+                $options: 'i'}
         })
+        res.json(user)
 
-        if(user){
-            res.json(user)
-        }else{
+    } catch (error) {
+        res.status(500).json({ error: "Error al obtener alumnos", errorMsg: error})
+    }
+}
 
-            res.status(404).json({
-                id: 0,
-                error: 'user no existe'
-            })
-        }
-    }else{
+export const createUser = async (req, res) => {
+
+    console.log("req.body: ", req.body);
+
+
+    if (!req.body.nombre && !req.body.edad && !req.body.email && !req.body.password) {
         res.status(400).json({
-            error: "Falta ID"
+            error: "Faltan Datos"
         })
     }
-    
+
+    const nuevoUsuario = {
+        nombre: req.body.nombre,
+        edad: req.body.edad,
+        email: req.body.email,
+        password: req.body.password
+    };
+
+    try {
+
+        const newUser = await User.create(nuevoUsuario)
+        res.status(201).json(newUser)
+
+    } catch (error) {
+        res.status(500).json({ error: "Error al crear Alumno", errorMsg: error })
+    }
+
 }
