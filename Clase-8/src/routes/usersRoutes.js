@@ -1,6 +1,7 @@
 import express from 'express'
-import { getUsers, createUser, getUsersSearch } from '../controllers/usersController.js'
+import { getUsers, createUser, getUsersSearch, actualizarProfilePic } from '../controllers/usersController.js'
 import { protegerRuta } from '../middlewares/authMiddlewares.js'
+import { allowUpload } from '../middlewares/uploadMiddleware.js'
 
 const router = express.Router()
 
@@ -9,7 +10,9 @@ const router = express.Router()
 router.get("/", getUsers)
 router.get("/search", getUsersSearch)
 
-router.post("/", protegerRuta, createUser)
+router.post("/", createUser)
+
+router.put('/', protegerRuta, allowUpload ,actualizarProfilePic)
 
 
 // MONGODB USER matiasduro y pass TP2

@@ -3,7 +3,8 @@ import express from "express" // llamar paquete con ESM (ECMAScript modules)
 import dotenv from "dotenv"
 // Para crear el package.json se usa npm init -y
 import { users } from "./src/data/users.js"
-import usersRoutes from './src/routes/usersRoutes.js' 
+import usersRoutes from './src/routes/usersRoutes.js'
+import productRoutes from './src/routes/productsRoutes.js' 
 import conectarDB from "./src/config/db.js"
 import authRoutes from './src/routes/authRoutes.js'
 import cookieParser from 'cookie-parser'
@@ -25,6 +26,8 @@ app.use(cookieParser()) // Necesario para leer cookies http
 app.use('/', authRoutes)
 
 app.use("/api/users", usersRoutes)
+app.use("/api/products", productRoutes)
+
 
 app.listen(PORT, () => {
     console.log("Servidor corriendo en http://localhost:", PORT);

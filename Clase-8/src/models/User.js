@@ -5,6 +5,7 @@ const userSchema = mongoose.Schema({
     edad: { type: Number, required: true},
     email: { type: String, required: true},
     password: { type: String, required: true},
+    profile_pic: { type: String}
 }, { timestamps: true}) // timestamp: no pertenece a los datos del usuario, sino que muestra
                         // cuando se creo o modifico el mismo
 

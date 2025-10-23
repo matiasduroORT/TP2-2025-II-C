@@ -17,7 +17,8 @@ export const protegerRuta = (req, res, next) => {
     const decodificado = jwt.verify(token, process.env.JWT_SECRET)
 
     console.log("decodificado: ", decodificado);
-
+    
+    req.usuario = decodificado
 
     next()
 
