@@ -98,7 +98,7 @@ export const filtarProductos = async (req, res) => {
 
         console.log("query: ", query);
         
-        const productos = await Product.find(query)
+        const productos = await Product.find(query).populate("user", "")
 
         res.json(productos);
         
